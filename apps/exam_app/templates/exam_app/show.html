@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Trip Details</title>
+</head>
+<body>
+	<h2>{{trip.destination}}</h2>
+	<p>Planned by: {{trip.created_by.first_name}} {{trip.created_by.last_name}}</p>
+	<p>Description: {{trip.description}}</p>
+	<p>Travel date from:{{trip.start_date}}</p>
+	<p>Travel date to:{{trip.end_date}}</p>
+	<br>
+	<br>
+	<h3>Other Users Joining the Trip:</h3>
+	{% for user in users %}
+	<p>{{user.first_name}} {{user.last_name}}</p>
+	{% endfor %}
+	<br>
+	<br>
+	<form action='/logout' method='POST'>
+        {% csrf_token %}
+        <input type="submit" value="Log Out">
+    </form>
+
+</body>
+</html>

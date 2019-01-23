@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Success</title>
+</head>
+
+<body>
+    {% if messages %} {% for message in messages %} {{ message.message }} {% endfor %} {% endif %}
+    <h1>Success! Welcome, {{user.first_name}} {{user.last_name}}</h1>
+    <p>You were successfully registered/logged in!</p>
+    <form action='/logout' method='POST'>
+        {% csrf_token %}
+        <input type="submit" value="Log Out">
+    </form>
+    <h2>Your Trip Schedules</h2>
+    <form action='/add' method='POST'>
+    <table>
+		<tr>
+			<th>Destination</th>
+			<th>Travel Start Date</th>
+			<th>Travel End Date</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+		{% for trip in my_trips %}
+		<tr>
+			<!-- <p>{{trip.id}}</p> -->
+			<td><a href="/show/{{trip.id}}">{{trip.destination}}</a></td>
+			<td>{{trip.start_date|date:"M d Y"}}</td>
+			<td>{{trip.end_date|date:"M d Y"}}</td>
+			<td>{{trip.description}}</td>
+			<td><a href="/destroyJoin/{{trip.id}}">Leave</td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+	</form>
+	<br>
+	<br>
+	<form action='/add' method='POST'>
+        {% csrf_token %}
+        <input type="submit" value="Add a Trip!">
+    </form>
+     <h2>Other User's Travel Plans</h2>
+    <form>
+    <table>
+		<tr>
+			<th>Destination</th>
+			<th>Travel Start Date</th>
+			<th>Travel End Date</th>
+			<th>Do you want to Join?</th>
+		</tr>
+		<tr>
+			{% for trip in not_my_trips %}
+			<td><a href="exam_app/show.html">{{trip.destination}}</a></td>
+			<td>{{trip.start_date|date:"M d Y"}}</td>
+			<td>{{trip.end_date|date:"M d Y"}}</td>
+			<td><a href="/createJoin/{{trip.id}}">Join</td>
+		</tr>
+			{% endfor %}
+	</table>
+	</form>
+
+</body>
+
+</html>

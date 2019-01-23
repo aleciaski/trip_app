@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var tigger = { character: "Tigger" }; // start with just the character attribute
+    var pooh = { character: "Winnie the Pooh" };
+    tigger.north = pooh; // add more attributes, where we are actually storing the memory location for the other object
+    pooh.south = tigger;
+    var piglet = { character: "Piglet" }; // create Piglet's home object with just the character attribute
+    piglet.east = tigger.north; // Piglet's east attribute is Tigger's north attribute, which is a memory address
+    tigger.north.west = piglet; // Follow Tigger's north attribute to a location in memory
+    // Assign that object's west attribute to piglet
+    var owl={character: "Owl"};
+    owl.south= piglet;
+    owl.south.east= pooh;
+    var bees= {character:"Bees"};
+    bees.west=pooh;
+    bees.south.west= tigger;
+    var robin={character: "Christopher Robin"};
+    robin.west= owl;
+    robin.south.west= piglet;
+    robin.north=pooh;
+    var rabbit= {character:"Rabbit"};
+    rabbit.south= pooh.east;
+    rabbit.west= owl.east;
+    rabbit.south.west= tigger.north;
+    var gopher={character:"Gopher"};
+    gopher.west= bees.north;
+    gopher.south.west= bees;
+    var kanga={character: "Kanga"};
+    kanga.south= pooh.north;
+    kanga.south.west= piglet.north;
+    kanga.south.east= rabbit;
+    var eeyore={character:"Eeyore"};
+    eeyore.south= kanga;
+    var heffalumps={character:"Heffalumps"};
+    heffalumps.west= kanga.north;
+
+
+    </script>
+</body>
+
+</html>

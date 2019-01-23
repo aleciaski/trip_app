@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FizzBuzz</title>
+</head>
+<body>
+	<h1>FizzBuzz</h1>
+	<script type="text/javascript">
+		function fizzBuzz(n){
+			for(var i=1; i<= n; i++){
+				if(i % 3== 0){
+					return "Fizz";
+				}
+				elif(i % 5== 0){
+					return "Buzz";
+				}
+				elif (i % 3== 0 && num % 5== 0){
+					return"FizzBuzz";
+				}else{
+					console.log(i);
+				}
+			}
+		}
+		fizzBuzz(5);
+		fizzBuzz(9);
+		fizzBuzz(15);
+	</script>
+
+</body>
+</html>

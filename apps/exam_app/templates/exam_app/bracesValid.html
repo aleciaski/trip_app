@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bracesValid</title>
+</head>
+<body>
+	<h1>bracesValid</h1>
+	<script type="text/javascript">
+		function bracesValid(str){
+			if(str.length < 1){
+				return false;
+			}
+			let matchingOpenBracket, ch
+			let stack= []
+
+			let openingBrackets=['[','{','(']
+			let closingBrackets=[']','}',')']
+
+			for(let i=0; i<str.length; i++){
+				ch= str[i]
+				if(closingBrackets.indexOf(ch)> -1){
+					matchingOpenBracket= openingBrackets[closingBrackets.indexOf(ch)]
+					if(stack.lenth== 0 || (stack.pop() != matchingOpenBracket)){
+						return false
+					}
+				}else{
+					stack.push(ch)
+				}
+			}
+			return(stack.length == 0)
+
+		};
+		
+	</script>
+
+</body>
+</html>
